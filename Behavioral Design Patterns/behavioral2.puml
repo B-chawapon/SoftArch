@@ -1,0 +1,47 @@
+@startuml
+class src.Person {
+- String name
+- Integer age
+- Integer height
+- Integer weight
++ String getName()
++ void setName(String)
++ Integer getAge()
++ void setAge(Integer)
++ Integer getHeight()
++ void setHeight(Integer)
++ Integer getWeight()
++ void setWeight(Integer)
+}
+class src.WeightStrategy {
++ void customSort(List<Person>)
+}
+class src.NameSortStrategy {
++ void customSort(List<Person>)
+}
+class src.People {
+- List<Person> members
+- SortStrategy sortStrategy
++ <<Create>> People()
++ void setSortStrategy(SortStrategy)
++ void addMember(Person)
++ void print(PrintStream)
+}
+class src.AgeSortStrategy {
++ void customSort(List<Person>)
+}
+interface src.SortStrategy {
+~ void customSort(List<Person>)
+}
+class src.Main {
++ {static} void main(String[])
+}
+class src.HeightSortStrategy {
++ void customSort(List<Person>)
+}
+
+src.SortStrategy <|.. src.WeightStrategy
+src.SortStrategy <|.. src.NameSortStrategy
+src.SortStrategy <|.. src.AgeSortStrategy
+src.SortStrategy <|.. src.HeightSortStrategy
+@enduml
